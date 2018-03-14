@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :models
   get 'project/index'
 
   get 'project/create'
