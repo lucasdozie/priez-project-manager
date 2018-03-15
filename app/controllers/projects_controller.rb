@@ -1,4 +1,4 @@
-class ProjectController < ApplicationController
+class ProjectsController < ApplicationController
 	
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
@@ -8,6 +8,7 @@ class ProjectController < ApplicationController
   def index
     @projects = project.all
   end
+
 
   # GET /projects/1
   # GET /projects/1.json
