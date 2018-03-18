@@ -6,7 +6,12 @@ class ProjectsController < ApplicationController
   # GET /al projects
   # GET /projects.json
   def index
-    @projects = project.all
+    @title = "Project Listing"
+    @projects = Project.where(:status => nil).order("created_at DESC")
+    @projects_sip = Project.where(:status => false)
+    @projects_completed = Project.where(status: true)
+
+      @new_project = Project.new
   end
 
 

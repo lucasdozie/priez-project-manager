@@ -1,0 +1,50 @@
+<div class="box-wrapper">
+			<div class="col-md-4">
+				<div class="projects ibox-content">
+					<h3>Projects Listings</h3>
+					<p><i class="fa fa-hand-o-up"></i>Drag project between list</p>
+					<%= form_for @new_project, :url => {:action => "create", :id => @new_project } do |f|%>
+					<div class="input-group-btn">
+						<% if @new_project.errors.any? %>
+		      			<ul>
+		      			  <%= @new_project.errors.full_messages.each do |msg| %>
+		      			    <li><%= msg %></li>
+		      			  <% end %>
+		      			</ul>
+		    			<% end %>
+		    			<%= f.text_field :name, :class => "input input-sm form-control", :require => "required" %>
+		    			<span class="input-group-btn">
+		    			<%= content_tag :button, :type => "submit", :class => "btn btn-sm btn-white" do%>
+		    			<i class="fa fa-plus"></i>
+							Add project
+		    			<%end%>
+		    			</span>
+		    		</div>
+					<% end %>
+					<ul id="todo">
+					<% @projects.each do |project|%>
+						<li class="draggable">
+							<%= project.name %>
+							<div class="time-duration">
+								<i class="fa fa-clock-o"></i>
+								<%if(project.created_at)%>
+								 <%= project.created_at %>
+								 <%else%>
+								 13 Feb, 2017 02:25 PM
+								 <%end%>
+							</div>
+							<%= content_tag :a, href: "/admin/projects/delete?id=#{project.id}", :class => "project_delete", :confirm => "Are you sure want to delete?" do%>
+				    			<i class="fa fa-trash"></i>
+				    		<%end%>
+							<% link_to "Destroy", {:action => 'delete', :id => project.id}, :class => "fa fa-trash", data:{confirm: "Are you sure want to delete?"} %>
+						
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+
+			<h1>Project#index</h1>
+<p>Find me in app/views/project/index.html.erb</p>
+
+</div>
