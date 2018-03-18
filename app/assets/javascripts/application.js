@@ -13,3 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 // require_tree .
+
+jQuery(
+	function(){ 
+		jQuery(".draggable").draggable(); 
+	}
+);

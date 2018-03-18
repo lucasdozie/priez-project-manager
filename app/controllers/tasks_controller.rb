@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  def index
+  	 def index
 	    @title = "Tasks"
 	    #@Tasks = Task.order("created_at DESC")
 	    @Tasks = Task.where(:status => nil).order("created_at DESC")
@@ -30,6 +30,6 @@ class TasksController < ApplicationController
 
 	  private
 	  def task_params
-	  	params.require(:task).permit(:Todo)	  	
+	  	params.require(:task).permit(:title)	  	
 	  end
 end

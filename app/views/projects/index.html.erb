@@ -1,7 +1,7 @@
 <div class="box-wrapper">
 			<div class="col-md-4">
 				<div class="projects ibox-content">
-					<h3>Projects Listings</h3>
+					<h3>Projects</h3>
 					<p><i class="fa fa-hand-o-up"></i>Drag project between list</p>
 					<%= form_for @new_project, :url => {:action => "create", :id => @new_project } do |f|%>
 					<div class="input-group-btn">
@@ -24,7 +24,10 @@
 					<ul id="todo">
 					<% @projects.each do |project|%>
 						<li class="draggable">
-							<%= project.name %>
+							<%= content_tag :a, href: "/tasks/index?id=#{project.id}", :class => "project_link" do%>
+				    			<span>Title: <%= project.name %></span>
+				    			<p>Brief: <%= project.description %></p>
+				    		<%end%>
 							<div class="time-duration">
 								<i class="fa fa-clock-o"></i>
 								<%if(project.created_at)%>
@@ -33,7 +36,7 @@
 								 13 Feb, 2017 02:25 PM
 								 <%end%>
 							</div>
-							<%= content_tag :a, href: "/admin/projects/delete?id=#{project.id}", :class => "project_delete", :confirm => "Are you sure want to delete?" do%>
+							<%= content_tag :a, href: "/projects/delete?id=#{project.id}", :class => "project_delete", :confirm => "Are you sure want to delete?" do%>
 				    			<i class="fa fa-trash"></i>
 				    		<%end%>
 							<% link_to "Destroy", {:action => 'delete', :id => project.id}, :class => "fa fa-trash", data:{confirm: "Are you sure want to delete?"} %>

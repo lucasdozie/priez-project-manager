@@ -81,4 +81,10 @@ z-index: 999;}
 .time-duration{margin-top: 8px;font-size: 12px;}
 .ibox-content.fa::before { left: 0px;}
 #todo{padding-top: 10px;}
-.task_delete{color: red;position: absolute;bottom: 10px;right: 6px;font-size: 18px;}
+.project_delete, .task_delete{color: red;position: absolute;bottom: 10px;right: 6px;font-size: 18px;}
+
+/*New changes*/
+.project-wrapper{max-width: 1100px;margin: 0px auto;}
+.project_link{text-decoration: none; color:#222; max-width: 450px; line-height: 1.6em;}
+.project_link p{color: rgb(93, 92, 92);}
+.project-wrapper .col-md-4{display: block;float: left;}

@@ -1,7 +1,7 @@
-	<div class="box-wrapper">
+<div class="box-wrapper">
 			<div class="col-md-4">
 				<div class="tasks ibox-content">
-					<h3>Todo - list</h3>
+					<h3>Task - lists</h3>
 					<p><i class="fa fa-hand-o-up"></i>Drag task between list</p>
 					<%= form_for @new_task, :url => {:action => "create", :id => @new_task } do |f|%>
 					<div class="input-group-btn">
@@ -12,7 +12,7 @@
 		      			  <% end %>
 		      			</ul>
 		    			<% end %>
-		    			<%= f.text_field :Todo, :class => "input input-sm form-control", :require => "required" %>
+		    			<%= f.text_field :title, :class => "input input-sm form-control", :require => "required" %>
 		    			<span class="input-group-btn">
 		    			<%= content_tag :button, :type => "submit", :class => "btn btn-sm btn-white" do%>
 		    			<i class="fa fa-plus"></i>
@@ -24,7 +24,7 @@
 					<ul id="todo">
 					<% @Tasks.each do |task|%>
 						<li class="draggable">
-							<%= task.Todo %>
+							<%= task.title %>
 							<div class="time-duration">
 								<i class="fa fa-clock-o"></i>
 								<%if(task.created_at)%>
@@ -50,7 +50,7 @@
 					<ul id="todo">
 					<% @Tasks_sip.each do |sip|%>
 						<li class="draggable">
-							<%= sip.Todo %>
+							<%= sip.title %>
 							<div class="time-duration">
 								<i class="fa fa-clock-o"></i>
 								 <%if(sip.created_at)%>
@@ -75,7 +75,7 @@
 					<ul id="todo">
 					<% @Tasks_completed.each do |completed| %>
 						<li>
-							<%= completed.Todo%>
+							<%= completed.title%>
 							<div class="time-duration">
 								<i class="fa fa-clock-o"></i>
 								<%if(completed.created_at)%>

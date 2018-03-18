@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: "projects#index"
   get 'tasks/index'
-
-  get 'tasks/create'
+  post 'tasks/create'
+  delete 'tasks/delete'
 
   get 'members/index'
 
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'projects/create'
   post 'projects/create'
-  get 'projects/delete'
+  delete 'projects/delete'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
