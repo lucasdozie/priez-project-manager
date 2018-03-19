@@ -24,7 +24,7 @@
 					<ul id="todo">
 					<% @projects.each do |project|%>
 						<li class="draggable">
-							<%= content_tag :a, href: "/tasks/index?id=#{project.id}", :class => "project_link" do%>
+							<%= content_tag :a, href: "/tasks/index?project_id=#{project.id}", :class => "project_link" do%>
 				    			<span>Title: <%= project.name %></span>
 				    			<p>Brief: <%= project.description %></p>
 				    		<%end%>

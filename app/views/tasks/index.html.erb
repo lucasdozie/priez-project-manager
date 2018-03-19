@@ -1,4 +1,5 @@
 <div class="box-wrapper">
+			<div class="row"><a href="/projects/index/"><i class="fa fa-arrow">Back</i></a></div>
 			<div class="col-md-4">
 				<div class="tasks ibox-content">
 					<h3>Task - lists</h3>
@@ -33,7 +34,7 @@
 								 13 Feb, 2017 02:25 PM
 								 <%end%>
 							</div>
-							<%= content_tag :a, href: "/admin/tasks/delete?id=#{task.id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
+							<%= content_tag :a, href: "/tasks/delete?id=#{task.id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
 				    			<i class="fa fa-trash"></i>
 				    		<%end%>
 							<% link_to "Destroy", {:action => 'delete', :id => task.id}, :class => "fa fa-trash", data:{confirm: "Are you sure want to delete?"} %>
