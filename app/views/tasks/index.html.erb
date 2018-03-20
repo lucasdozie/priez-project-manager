@@ -13,7 +13,29 @@
 		      			  <% end %>
 		      			</ul>
 		    			<% end %>
-		    			<%= f.text_field :title, :class => "input input-sm form-control", :require => "required" %>
+		    		</div>
+		    		<div class="form-wrapper">
+		    			<div class="form-group">
+		    				<%= f.label :title%>
+			    			<%= f.text_field :title, :class => "input input-sm form-control", :require => "required" %>
+			    		</div>
+			    		<div class="form-group">
+			    			<%= f.label :description%>
+			    			<%= f.text_area :description, :class => "input textarea input-sm form-control", :require => "required" %>
+			    		</div>
+			    		<div class="form-group">
+			    			<%= f.label :duration%>
+			    			<%= f.date_select :duration, :class => "form-control", :require => "required" %>
+			    		</div>
+			    		<div class="form-group hidden">
+			    			<%= f.hidden_field :status, :class => "input input-sm form-control", :require => "required", value:"0" %>
+			    			<%= f.hidden_field :project_id, :class => "input input-sm form-control", :require => "required", value:params[:project_id] %>
+			    			<% if user_signed_in? %>
+							    <%= f.hidden_field :member_id, required: true, class: 'form-control', value:current_user.email %>
+							<% else %>
+							    <%= f.hidden_field :member_id, required: true, class: 'form-control'%>
+							<% end %>
+			    		</div>
 		    			<span class="input-group-btn">
 		    			<%= content_tag :button, :type => "submit", :class => "btn btn-sm btn-white" do%>
 		    			<i class="fa fa-plus"></i>
@@ -22,26 +44,6 @@
 		    			</span>
 		    		</div>
 					<% end %>
-					<ul id="todo">
-					<% @Tasks.each do |task|%>
-						<li class="draggable">
-							<%= task.title %>
-							<div class="time-duration">
-								<i class="fa fa-clock-o"></i>
-								<%if(task.created_at)%>
-								 <%= task.created_at %>
-								 <%else%>
-								 13 Feb, 2017 02:25 PM
-								 <%end%>
-							</div>
-							<%= content_tag :a, href: "/tasks/delete?id=#{task.id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
-				    			<i class="fa fa-trash"></i>
-				    		<%end%>
-							<% link_to "Destroy", {:action => 'delete', :id => task.id}, :class => "fa fa-trash", data:{confirm: "Are you sure want to delete?"} %>
-						
-						</li>
-						<% end %>
-					</ul>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -61,7 +63,10 @@
 								 <%end%>
 							</div>
 							<%@id = sip.id %>
-							<%= content_tag :a, href: "/admin/tasks/delete?id=#{@id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
+							<%= content_tag :a, href: "/tasks/edit?id=#{@id}", :class => "task_edit" do%>
+				    			<i class="fa fa-edit"></i>
+				    		<%end%>
+							<%= content_tag :a, href: "/tasks/delete?id=#{@id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
 				    			<i class="fa fa-trash"></i>
 				    		<%end%>
 						</li>
@@ -84,8 +89,11 @@
 								 <%else%>
 								 13 Feb, 2017 02:25 PM
 								 <%end%>
-							</div>	
-							<%= content_tag :a, href: "/admin/tasks/delete?id=#{completed.id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
+							</div>
+							<%= content_tag :a, href: "/tasks/edit?id=#{completed.id}", :class => "task_edit" do%>
+				    			<i class="fa fa-edit"></i>
+				    		<%end%>
+							<%= content_tag :a, href: "/tasks/delete?id=#{completed.id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
 				    			<i class="fa fa-trash"></i>
 				    		<%end%>					
 						</li>

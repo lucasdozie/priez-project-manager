@@ -75,7 +75,7 @@ tr:nth-of-type(2n+1){margin: 8px 0;background: #f1f1f1}
 z-index: 999;}
 .ibox-content li:nth-of-type(2n + 1){border-left: 3px solid #1ab394;}
 .ibox-content input[type="text"]{float: left;width: 203px;margin-top: 0;}
-.box-wrapper{width: 100%;float: left;padding: 20px 0;}
+.project-wrapper{width: 100%;float: left;padding: 20px 0;}
 .ibox-content h3{font-size: 22px;margin: 20px 0 10px;}
 .ibox-content form{padding: 10px 0 5px;}
 .time-duration{margin-top: 8px;font-size: 12px;}
@@ -84,7 +84,8 @@ z-index: 999;}
 .project_delete, .task_delete{color: red;position: absolute;bottom: 10px;right: 6px;font-size: 18px;}
 
 /*New changes*/
-.project-wrapper{max-width: 1100px;margin: 0px auto;}
+.box-wrapper{max-width: 1100px;margin: 0px auto;}
 .project_link{text-decoration: none; color:#222; max-width: 450px; line-height: 1.6em;}
 .project_link p{color: rgb(93, 92, 92);}
 .project-wrapper .col-md-4{display: block;float: left;}
+.form-wrapper .form-control{width:100% !important;}

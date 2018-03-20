@@ -13,14 +13,30 @@ class TasksController < ApplicationController
 	  def create
 	  	@task = Task.new(task_params)
 	  	if @task.save
+	  		# Tell the UserMailer to send a welcome email after save
+        	UserMailer.old_welcome_email(@task).deliver_later
 	  		redirect_to :action => 'index', :notice => "The task has been successfully updated."
 	  		#respond_to do |f|
-			#   f.html { redirect_to projects_index_url }
+			#   f.html { #redirect_to projects_index_url }
 			#   f.js
 		  	#end
 	  	else
 	  		render action: "index", :notice => "Failed please check your input."
 	  	end
+	  end
+
+	  def edit
+	     @title = "Edit task"
+	     @task = Task.find(params[:id])
+	  end
+
+	  def update
+	    @task = Task.find(params[:id])
+	    if @task.update_attributes(task_params)
+	      redirect_to :action => 'index', :id => @task
+	    else
+	      render :action => 'edit'
+	    end
 	  end
 
 	  def delete
@@ -30,6 +46,6 @@ class TasksController < ApplicationController
 
 	  private
 	  def task_params
-	  	params.require(:task).permit(:title)	  	
+	  	params.require(:task).permit(:title, :description, :duration, :member_id, :status, :project_id)	  	
 	  end
 end

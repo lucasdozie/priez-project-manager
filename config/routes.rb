@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "projects#index"
   get 'tasks/index'
+  get 'tasks/edit'
+  put 'tasks/update'
   post 'tasks/create'
   delete 'tasks/delete'
 
