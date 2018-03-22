@@ -44,6 +44,28 @@
 		    			</span>
 		    		</div>
 					<% end %>
+					<ul id="todo">
+					<% @Tasks.each do |sip|%>
+						<li class="draggable">
+							<%= sip.title %>
+							<div class="time-duration">
+								<i class="fa fa-clock-o"></i>
+								 <%if(sip.created_at)%>
+								 <%= sip.created_at %>
+								 <%else%>
+								 13 Feb, 2017 02:25 PM
+								 <%end%>
+							</div>
+							<%@id = sip.id %>
+							<%= content_tag :a, href: "/tasks/edit?id=#{@id}", :class => "task_edit" do%>
+				    			<i class="fa fa-edit"></i>
+				    		<%end%>
+							<%= content_tag :a, href: "/tasks/delete?id=#{@id}", :class => "task_delete", :confirm => "Are you sure want to delete?" do%>
+				    			<i class="fa fa-trash"></i>
+				    		<%end%>
+						</li>
+					<%end%>
+					</ul>
 				</div>
 			</div>
 			<div class="col-md-4">

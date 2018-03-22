@@ -36,18 +36,16 @@
 								 13 Feb, 2017 02:25 PM
 								 <%end%>
 							</div>
+							<%= content_tag :a, href: "/projects/edit?id=#{project.id}", :class => "task_edit" do%>
+				    			<i class="fa fa-edit"></i>
+				    		<%end%>
 							<%= content_tag :a, href: "/projects/delete?id=#{project.id}", :class => "project_delete", :confirm => "Are you sure want to delete?" do%>
 				    			<i class="fa fa-trash"></i>
 				    		<%end%>
-							<% link_to "Destroy", {:action => 'delete', :id => project.id}, :class => "fa fa-trash", data:{confirm: "Are you sure want to delete?"} %>
 						
 						</li>
 						<% end %>
 					</ul>
 				</div>
 			</div>
-
-			<h1>Project#index</h1>
-<p>Find me in app/views/project/index.html.erb</p>
-
 </div>

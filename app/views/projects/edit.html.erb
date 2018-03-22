@@ -1,0 +1,35 @@
+<div class="box-wrapper">
+	<div class="row"><a href="/projects/index/"><i class="fa fa-arrow">Back</i></a></div>
+			<div class="col-md-4">
+				<div class="projects ibox-content">
+					<h3>Projects</h3>
+					<p><i class="fa fa-hand-o-up"></i>Drag project between list</p>
+					<%= form_for @project, :url => {:action => "update", :id => @project } do |f|%>
+					<div class="input-group-btn">
+						<% if @project.errors.any? %>
+		      			<ul>
+		      			  <%= @project.errors.full_messages.each do |msg| %>
+		      			    <li><%= msg %></li>
+		      			  <% end %>
+		      			</ul>
+		    			<% end %>
+		    			<%= f.text_field :name, :class => "input input-sm form-control", :require => "required" %>
+		    			<div class="form-group">
+			    			<%= f.label :description%>
+			    			<%= f.text_area :description, :class => "input textarea input-sm form-control", :require => "required" %>
+			    		</div>
+						<div class="form-group">
+			    			<%= f.label :status%>
+			    			<%= f.text_field :status, :class => "input input-sm form-control", :require => "required" %>
+			    		</div>
+		    			<span class="input-group-btn">
+		    			<%= content_tag :button, :type => "submit", :class => "btn btn-sm btn-white" do%>
+		    			<i class="fa fa-plus"></i>
+							Update project
+		    			<%end%>
+		    			</span>
+		    		</div>
+					<% end %>
+				</div>
+			</div>
+		</div>

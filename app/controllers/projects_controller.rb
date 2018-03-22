@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 	
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  #before_action :set_project, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!, except: [:index, :show]
 
   # GET /al projects
   # GET /projects.json
@@ -29,11 +29,14 @@ class ProjectsController < ApplicationController
   # GET /projects/new project.new
   def new
     @project = current_user.projects.build
+    #@project = Task.find(params[:id])
   end
 
   # GET /projects/1/edit
   def edit
-  end
+       @title = "Edit Project"
+       @project = Project.find(params[:id])
+    end
 
   # POST /projects
   # POST /projects.json
@@ -54,9 +57,11 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    @project = Project.find(params[:id])
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'project was successfully updated.' }
+        #format.html { redirect_to @project, notice: 'project was successfully updated.' }
+        format.html { redirect_to :action => 'edit', :id => @project, notice: 'project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -78,11 +83,11 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = project.find(params[:id])
+      @project = Project.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :description, :project_length, :director, :rating, :image, :video)
+      params.require(:project).permit(:name, :description, :status)
     end 
 end

@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   get 'tasks/edit'
   patch 'tasks/update'
   post 'tasks/create'
+  get 'tasks/delete'
   delete 'tasks/delete'
 
   get 'members/index'
 
   devise_for :users #model use instead of users
   get 'projects/index'
-
+  get 'projects/edit'
+  patch 'projects/update'
   get 'projects/create'
   post 'projects/create'
   delete 'projects/delete'
